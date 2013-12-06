@@ -14,9 +14,9 @@ describe Braspag::Request do
 
 
     it "delegates the call method to soap_adapter" do
-      soap_adapter = mock('soap_adapter')
+      soap_adapter = double('soap_adapter')
       request = described_class.new(wsdl_url, action, params, soap_adapter){|request| request.on_success {}}
-      soap_adapter.should_receive(:call).with(wsdl_url, action, params).and_return(stub(:success? => true))
+      soap_adapter.should_receive(:call).with(wsdl_url, action, params).and_return(double(:success? => true))
       request.call
     end
 
