@@ -1,5 +1,5 @@
 module Braspag
-  class Request 
+  class Request
     attr_accessor :soap_adapter, :success_callback, :failure_callback
 
     def initialize(wsdl_url, action, params, soap_adapter = SavonAdapter)
