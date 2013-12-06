@@ -1,20 +1,26 @@
 # Braspag
 
-TODO: Write a gem description
+Provides an easier Ruby integration with the Braspag payment gateway.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application Gemfile:
 
-    gem 'braspag'
+```bash
+gem 'braspag'
+```
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install braspag
+```bash
+$ gem install braspag
+```
 
 ## Usage
 
