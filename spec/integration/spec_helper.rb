@@ -1,11 +1,7 @@
-$:.unshift File.dirname(__FILE__) + "../../lib"
+require_relative "../spec_helper"
 
-require "rubygems"
-require "braspag"
-require "rspec"
 require "vcr"
 require "webmock"
-require "pry"
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
