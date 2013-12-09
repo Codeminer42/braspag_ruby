@@ -1,50 +1,70 @@
 # Braspag
 
-Provides an easier Ruby integration with the Braspag payment gateway using SOAP.
+Provê uma forma mais simples de integrar o Ruby com o gateway de pagamento Braspag através do protocolo SOAP.
 
-## Installation
+## Instalação
 
-Add this line to your application Gemfile:
+Adicione essa linha ao seu Gemfile:
 
 ```bash
 gem 'braspag'
 ```
 
-And then execute:
+E execute:
 
 ```bash
 $ bundle
 ```
 
-Or install it yourself with:
+Ou instale manualmente:
 
 ```bash
 $ gem install braspag
 ```
 
-## How it works
+## Como funciona
 
-Braspag gem currently supports 4 types of transactions so far:
+A gem Braspag atualmente suporta as seguintes tipos de transações:
 
-### Authorization (AuthorizeTransaction WSDL method)
+### Autorização (método AuthorizeTransaction)
 
-Designated to handle several types of transactions (credit card, bank slip, etc).
+O método AuthorizeTransaction é utilizado para autorizar transações de cartão de crédito, boleto e etc. No caso do cartão, a autorização é a primeira perna da transação. Apenas verifica se o cartão é válido, se tem limite e retém o limite até segunda ordem - mais informações vide documentação.
 
-### Capture
+Para iniciar uma autorização, execute:
 
-### Cancel
+```ruby
+Braspag::Transaction.authorize(
+  "OrderId" => @order.id,          # Identificador do pedido/pagamento no seu sistema
+  "CustomerIdentity" => @user.id,  # Identificador do cliente no seu sistema
+  "CustomerName" => @user.name,    # Nome do cliente
+  "CustomerEmail" => @user.email,  # E-mail do cliente
+  "CreditCardToken" => @user.credit_card_token,  # Token do cartão de crédito do cliente fornecido pelo Braspag
+  "Street" => @user.address.street,              # Endereço
+  "ZipCode" => @user.zip_code,                   # CEP
+  "PaymentMethod" => 500,      # Código de meio de pagamento (500 - Cielo Visa) / vide documentação
+  "NumberOfPayments" => 1,     # Número de vezes que a transação foi parcelada / vide documentação
+  "PaymentPlan" => 0,          # Código de plano de pagamento (0 - à vista) / vide documentação
+  "TransactionType" => 1,      # Tipo de transação (1 - préautorização) / vide documentação
+  "Currency" => "BRL",         # Moeda
+  "Country" => "BRA"           # País
+  "Amount" => @order.value,    # Valor
+)
+```
 
+### Captura
 
-### Refund
-TODO - not implemented
+### Cancelamento
 
+### Refund (Estorno)
+TODO - não implementado
 
-TODO: Write usage instructions here
+### ChargeBack
+TODO - não implementado
 
-## Contributing
+## Contribuindo
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1. Faça fork do projeto
+2. Crie a sua feature branch (`git checkout -b my-new-feature`)
+3. Faça commit das suas mudanças (`git commit -am 'Add some feature'`)
+4. Envie suas mudanças (`git push origin my-new-feature`)
+5. Crie um novo pull request
