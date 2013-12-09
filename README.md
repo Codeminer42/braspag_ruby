@@ -30,7 +30,7 @@ A gem Braspag atualmente suporta as seguintes tipos de transações:
 
 O método AuthorizeTransaction é utilizado para autorizar transações de cartão de crédito, boleto e etc. No caso do cartão, a autorização é a primeira perna da transação. Apenas verifica se o cartão é válido, se tem limite e retém o limite até segunda ordem - mais informações vide documentação.
 
-Para iniciar uma autorização, execute:
+Exemplo de autorização:
 
 ```ruby
 Braspag::Transaction.authorize(
@@ -44,10 +44,12 @@ Braspag::Transaction.authorize(
   "PaymentMethod" => 500,      # Código de meio de pagamento (500 - Cielo Visa) / vide documentação
   "NumberOfPayments" => 1,     # Número de vezes que a transação foi parcelada / vide documentação
   "PaymentPlan" => 0,          # Código de plano de pagamento (0 - à vista) / vide documentação
-  "TransactionType" => 1,      # Tipo de transação (1 - préautorização) / vide documentação
+  "TransactionType" => 1,      # Tipo de transação (1 - pré-autorização) / vide documentação
   "Currency" => "BRL",         # Moeda
-  "Country" => "BRA"           # País
-  "Amount" => @order.value,    # Valor
+  "City" => "São Paulo",       # Cidade
+  "State" => "SP",             # Estado
+  "Country" => "BRA",          # País
+  "Amount" => @order.value     # Valor
 )
 ```
 
