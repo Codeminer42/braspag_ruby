@@ -44,8 +44,8 @@ describe Braspag::ResponseHandler do
         {:save_credit_card_response=>
          {:save_credit_card_result=>
           {:success=>false,
-           :error_report_collection => 
-          {:error_report => 
+           :error_report_collection =>
+          {:error_report =>
            {:error_code => return_code,
             :error_message => return_message}}},
             :@xmlns=>"http://www.cartaoprotegido.com.br/WebService/"}}
@@ -76,8 +76,8 @@ describe Braspag::ResponseHandler do
         {:get_credit_card_response=>
          {:get_credit_card_result=>
           {:success=>false,
-           :error_report_collection => 
-          {:error_report => 
+           :error_report_collection =>
+          {:error_report =>
            {:error_code => return_code,
             :error_message => return_message}},
             :masked_card_number=>"1"},
@@ -148,8 +148,8 @@ describe Braspag::ResponseHandler do
         {:capture_credit_card_transaction_response=>
          {:capture_credit_card_transaction_result=>
           {:success => false,
-           :error_report_data_collection => 
-          {:error_report_data_response => 
+           :error_report_data_collection =>
+          {:error_report_data_response =>
            {:error_code => return_code,
             :error_message => return_message}},
             :@xmlns=>"https://www.pagador.com.br/webservice/pagador"}}}
@@ -219,8 +219,8 @@ describe Braspag::ResponseHandler do
           {:capture_credit_card_transaction_response=>
            {:capture_credit_card_transaction_result=>
             {:success => false,
-             :error_report_data_collection => 
-            {:error_report_data_response => 
+             :error_report_data_collection =>
+            {:error_report_data_response =>
              {:error_code => return_code,
               :error_message => return_message}},
               :@xmlns=>"https://www.pagador.com.br/webservice/pagador"}}}

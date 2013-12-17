@@ -21,7 +21,7 @@ module Braspag
     end
 
     def authorize(params)
-      request = Request.new(Braspag.transaction_wsdl, :authorize_transaction, build_authorize_credit_card_params(params)) do |request| 
+      request = Request.new(Braspag.transaction_wsdl, :authorize_transaction, build_authorize_credit_card_params(params)) do |request|
         request.on_success {|response| response_handler.authorize_transaction(response) }
         request.on_failure {|response| response_handler.handle_error(response) }
       end
@@ -30,7 +30,7 @@ module Braspag
     end
 
     def capture(params)
-      request = Request.new(Braspag.transaction_wsdl, :capture_credit_card_transaction, build_capture_credit_card_params(params)) do |request| 
+      request = Request.new(Braspag.transaction_wsdl, :capture_credit_card_transaction, build_capture_credit_card_params(params)) do |request|
         request.on_success {|response| response_handler.capture_transaction(response) }
         request.on_failure {|response| response_handler.handle_error(response) }
       end
@@ -39,7 +39,7 @@ module Braspag
     end
 
     def cancel(params)
-      request = Request.new(Braspag.transaction_wsdl, :void_credit_card_transaction, build_capture_credit_card_params(params)) do |request| 
+      request = Request.new(Braspag.transaction_wsdl, :void_credit_card_transaction, build_capture_credit_card_params(params)) do |request|
         request.on_success {|response| response_handler.void_transaction(response) }
         request.on_failure {|response| response_handler.handle_error(response) }
       end

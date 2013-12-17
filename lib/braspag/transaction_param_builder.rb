@@ -14,7 +14,7 @@ module Braspag
           "PaymentDataCollection" => Braspag.payment_data_request_xml_builder.new(params),
           "CustomerData" => {
             "CustomerName" => params["CustomerName"],
-            "CustomerIdentity" => params["CustomerIdentity"], 
+            "CustomerIdentity" => params["CustomerIdentity"],
             "CustomerEmail" => params["CustomerEmail"]
           },
           "CustomerAddressData" => {
@@ -31,7 +31,7 @@ module Braspag
     def capture
       { "request" => {
         "RequestId" => SecureRandom.uuid,
-        "Version" => 1, 
+        "Version" => 1,
         "MerchantId" => Braspag.merchant_id,
         "TransactionDataCollection" => {
           "TransactionDataRequest" => {

@@ -9,7 +9,7 @@ module Braspag
     def to_s
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.root('xmlns:tns' => 'type') do
-          xml['tns'].PaymentDataRequest('xsi:type' => "tns:CreditCardDataRequest") { 
+          xml['tns'].PaymentDataRequest('xsi:type' => "tns:CreditCardDataRequest") {
             xml['tns'].PaymentMethod params["PaymentMethod"]
             xml['tns'].Amount params["Amount"]
             xml['tns'].Country params["Country"]

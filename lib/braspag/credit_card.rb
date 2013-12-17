@@ -16,7 +16,7 @@ module Braspag
     end
 
     def get(params)
-      request = Request.new(Braspag.credit_card_wsdl, :get_credit_card, build_params("getCreditCardRequestWS", params)) do |request| 
+      request = Request.new(Braspag.credit_card_wsdl, :get_credit_card, build_params("getCreditCardRequestWS", params)) do |request|
         request.on_success {|response| response_handler.get_credit_card(response) }
         request.on_failure {|response| response_handler.handle_error(response) }
       end
@@ -25,7 +25,7 @@ module Braspag
     end
 
     def save(params)
-      request = Request.new(Braspag.credit_card_wsdl, :save_credit_card, build_params("saveCreditCardRequestWS", params)) do |request| 
+      request = Request.new(Braspag.credit_card_wsdl, :save_credit_card, build_params("saveCreditCardRequestWS", params)) do |request|
         request.on_success {|response| response_handler.save_credit_card(response) }
         request.on_failure {|response| response_handler.handle_error(response) }
       end
