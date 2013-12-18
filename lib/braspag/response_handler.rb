@@ -78,12 +78,7 @@ module Braspag
     end
 
     def credit_card_response_for(data)
-      if data[:success]
-        OpenStruct.new(:success? => true, :data => data)
-      else
-        error_report = data[:error_report_collection][:error_report]
-        OpenStruct.new(:success? => false, :error_code => error_report[:error_code], :error_message => error_report[:error_message])
-      end
+      Braspag::Response.new(data)
     end
 
     def respond_with_success(data)
