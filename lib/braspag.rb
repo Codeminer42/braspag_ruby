@@ -1,18 +1,8 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-require "braspag/version"
 require "savon"
 require "securerandom"
 require "logger"
-require "braspag/savon_adapter"
-require "braspag/request"
-require "braspag/response"
-require "braspag/response_errors"
-require "braspag/response_handler"
-require "braspag/payment_data_request_xml"
-require "braspag/transaction_param_builder"
-require "braspag/transaction"
-require "braspag/credit_card"
 
 module Braspag
   TRANSACTION_WSDL = {
@@ -41,11 +31,16 @@ module Braspag
     end
   end
 
+  def self.root
+    Pathname.new File.expand_path('../..', __FILE__)
+  end
+
   def self.configure
     yield self
   end
-
 end
+
+Dir[Braspag.root.join('lib/braspag/**/*.rb')].each { |f| require f }
 
 Braspag.configure do |config|
   config.production = false
