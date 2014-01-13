@@ -20,5 +20,11 @@ module Braspag
     def on_failure(&block)
       self.failure_callback = block
     end
+
+    private
+
+    def response_handler
+      @response_handler ||= ResponseHandler.new
+    end
   end
 end

@@ -2,9 +2,8 @@ module Braspag
   class Transaction
     attr_accessor :response_handler, :transaction_param_builder
 
-    def initialize(response_handler = ResponseHandler.new, transaction_param_builder = TransactionParamBuilder)
+    def initialize(response_handler = ResponseHandler.new)
       @response_handler = response_handler
-      @transaction_param_builder = transaction_param_builder
     end
 
     def self.authorize(params)
@@ -24,12 +23,7 @@ module Braspag
     end
 
     def capture(params)
-      request = Request.new(Braspag.transaction_wsdl, :capture_credit_card_transaction, build_capture_credit_card_params(params)) do |request|
-        request.on_success {|response| response_handler.capture_transaction(response) }
-        request.on_failure {|response| response_handler.handle_error(response) }
-      end
-
-      request.call
+      CaptureTransactionRequest.new(params).call
     end
 
     def cancel(params)
@@ -39,12 +33,6 @@ module Braspag
       end
 
       request.call
-    end
-
-    private
-
-    def build_capture_credit_card_params(params)
-      transaction_param_builder.new(params).capture
     end
   end
 end
