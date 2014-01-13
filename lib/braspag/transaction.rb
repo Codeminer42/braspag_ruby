@@ -7,15 +7,15 @@ module Braspag
     end
 
     def self.authorize(params)
-      Braspag::Transaction.new.authorize(params)
+      Transaction.new.authorize(params)
     end
 
     def self.capture(params)
-      Braspag::Transaction.new.capture(params)
+      Transaction.new.capture(params)
     end
 
     def self.cancel(params)
-      Braspag::Transaction.new.cancel(params)
+      Transaction.new.cancel(params)
     end
 
     def authorize(params)
