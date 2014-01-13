@@ -1,9 +1,8 @@
 module Braspag
   class CreditCard
-    attr_accessor :soap_adapter, :response_handler
+    attr_accessor :response_handler
 
-    def initialize(soap_adapter = SavonAdapter, response_handler = ResponseHandler.new)
-      @soap_adapter = soap_adapter
+    def initialize(response_handler = ResponseHandler.new)
       @response_handler = response_handler
     end
 

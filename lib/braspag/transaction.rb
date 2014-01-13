@@ -1,9 +1,8 @@
 module Braspag
   class Transaction
-    attr_accessor :soap_adapter, :response_handler, :transaction_param_builder
+    attr_accessor :response_handler, :transaction_param_builder
 
-    def initialize(soap_adapter = SavonAdapter, response_handler = ResponseHandler.new, transaction_param_builder = TransactionParamBuilder)
-      @soap_adapter = soap_adapter
+    def initialize(response_handler = ResponseHandler.new, transaction_param_builder = TransactionParamBuilder)
       @response_handler = response_handler
       @transaction_param_builder = transaction_param_builder
     end
