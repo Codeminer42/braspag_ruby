@@ -20,12 +20,7 @@ module Braspag
     end
 
     def authorize(params)
-      request = Request.new(Braspag.transaction_wsdl, :authorize_transaction, build_authorize_credit_card_params(params)) do |request|
-        request.on_success {|response| response_handler.authorize_transaction(response) }
-        request.on_failure {|response| response_handler.handle_error(response) }
-      end
-
-      request.call
+      AuthorizeTransactionRequest.new(params).call
     end
 
     def capture(params)
@@ -47,10 +42,6 @@ module Braspag
     end
 
     private
-
-    def build_authorize_credit_card_params(params)
-      transaction_param_builder.new(params).authorize
-    end
 
     def build_capture_credit_card_params(params)
       transaction_param_builder.new(params).capture
