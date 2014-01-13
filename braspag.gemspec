@@ -6,8 +6,8 @@ require 'braspag/version'
 Gem::Specification.new do |gem|
   gem.name          = "braspag"
   gem.version       = Braspag::VERSION
-  gem.authors       = ["Rinaldi Fonseca"]
-  gem.email         = ["rinaldifonseca@gmail.com"]
+  gem.authors       = ["Rinaldi Fonseca", "Mateus Gomes"]
+  gem.email         = ["rinaldifonseca@gmail.com", "mateusg.18@gmail.com"]
   gem.description   = %q{Braspag gem}
   gem.summary       = %q{Braspag}
   gem.homepage      = ""
