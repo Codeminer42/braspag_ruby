@@ -2,9 +2,9 @@ module Braspag
   class Response
     attr_reader :data, :errors
 
-    def initialize(data)
-      @data = data
-      @errors = Braspag::ResponseErrors.new(data[:error_report_collection])
+    def initialize(options)
+      @data   = options[:data] || {}
+      @errors = Braspag::ResponseErrors.new(options[:errors] || data[:error_report_collection])
     end
 
     def success?

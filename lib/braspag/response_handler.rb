@@ -77,8 +77,8 @@ module Braspag
       respond_with_failure({:return_code => error_report[:error_code], :return_message => error_report[:error_message]})
     end
 
-    def credit_card_response_for(data)
-      Braspag::Response.new(data)
+    def credit_card_response_for(soap_response)
+      Braspag::Response.new(data: soap_response)
     end
 
     def respond_with_success(data)
